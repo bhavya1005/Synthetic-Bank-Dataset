@@ -113,12 +113,13 @@ def home_page():
     st.title("🏦 Bank Household Analysis Dashboard")
     st.markdown("""
     ## **Introduction**
-    The goal of this project is to determine how large banks wiyth 
-    Welcome to the **Bank Household Analysis Dashboard**. This project aims to provide comprehensive insights into how banks determine households based on customer data. By analyzing various demographic and financial metrics, we seek to uncover patterns and relationships that can inform banking strategies and decision-making.
-    
+    Welcome to the **Bank Household Analysis Dashboard**. The goal of this project is to understand how large banks determine households based on customer data, providing insights that can help shape banking strategies and decision-making. By analyzing various demographic and financial metrics, patterns and relationships are uncovered that highlight customer behavior and financial health.
+
     ## **Dataset Overview**
     
-    The dataset used in this analysis contains information about bank customers, including their personal details, financial metrics, and household information. Key columns include:
+    The dataset used in this analysis was synthetically generated for academic purposes to closely mimic real-world customer data in a banking context. It includes detailed information about bank customers, such as names, addresses, states, income, credit scores, and age. Data generation techniques were employed to simulate realistic patterns, making the dataset practical for educational projects and demonstrations without using sensitive real-world data.
+    
+    Key columns include:
     
     - **First_Name:** Customer's first name.
     - **Last_Name:** Customer's last name.
@@ -131,6 +132,7 @@ def home_page():
     
     ## **Summary Statistics**
     """)
+
 
     if df is not None:
         st.write(df.describe())
@@ -341,7 +343,8 @@ def household_detection_page():
         return
     st.title("🏠 Household Detection")
     st.markdown("""
-    Analyze the household structures within the customer base. Understand the distribution of households, their sizes, and financial metrics.
+    In this dashboard, households are grouped by identifying customers who share the same last name and address. This method assumes that individuals with matching last names living at the same location are part of the same household. By aggregating their information, such as total income and the number of members, the dashboard provides insights into the financial health and demographics of each household. This approach helps banks understand household dynamics, enabling them to tailor services to meet the specific needs of families and shared living arrangements.
+                
     """)
     st.markdown("---")  # Horizontal line for separation
     st.sidebar.header("🔧 Filter Options")
