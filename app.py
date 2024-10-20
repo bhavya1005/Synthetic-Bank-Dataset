@@ -107,7 +107,7 @@ df, household_df = load_and_clean_data(data_filepath)
 
 ## Streamlit Dashboard
 st.sidebar.title("📑 Navigation")
-page = st.sidebar.radio("Go to : ", ["Home", "Customer Insights", "Household Detection", "Future"])
+page = st.sidebar.radio("Go to:", ["Home", "Customer Insights", "Household Detection", "Future Studies"])
 # Home Page
 def home_page():
     st.title("🏦 Bank Household Analysis Dashboard")
@@ -481,7 +481,6 @@ def future_studies_page():
        - **Customer Engagement:** Develop targeted marketing strategies.
     """)
 
-
 # Page Routing
 if page == "Home":
     home_page()
@@ -493,4 +492,3 @@ elif page == "Future Studies":
     future_studies_page()
 else:
     st.error("Page not found.")
-# small change 1
