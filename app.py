@@ -115,7 +115,7 @@ def home_page():
     ## **Introduction**
     Welcome to the **Bank Household Analysis Dashboard**. The goal of this project is to understand how large banks determine households based on customer data, providing insights that can help shape banking strategies and decision-making. By analyzing various demographic and financial metrics, patterns and relationships are uncovered that highlight customer behavior and financial health.
 
-    ## **Dataset Overview**
+    ## **Data Overview**
     
     The dataset used in this analysis was synthetically generated for academic purposes to closely mimic real-world customer data in a banking context. It includes detailed information about bank customers, such as names, addresses, states, income, credit scores, and age. Data generation techniques were employed to simulate realistic patterns, making the dataset practical for educational projects and demonstrations without using sensitive real-world data.
     
@@ -130,13 +130,18 @@ def home_page():
     - **State:** State where the customer resides.
     - **Created_At:** Date when the customer record was created.
     
-    ## **Summary Statistics**
+    ## Customer Dataset 
     """)
-
-
     if df is not None:
+        st.dataframe(df.head(10))  # Display the first 10 rows initially
+        st.markdown("---")
+        
+        # Add a slider to scroll through the dataset
+        row_start = st.slider("Select row range to display", 0, len(df) - 10, 0, 10)
+        st.dataframe(df.iloc[row_start:row_start + 10])
+        
+        st.header("📊 Summary Statistics")
         st.write(df.describe())
-        st.markdown("---")    
 # Correlation Heatmap
         st.header("🔥 Correlation Heatmap")
         st.markdown("""
@@ -513,3 +518,8 @@ elif page == "Future Studies":
     future_studies_page()
 else:
     st.error("Page not found.")
+
+st.sidebar.markdown("""
+---
+Developed by [Bhavya](https://github.com/bhavya1005)
+""")
