@@ -408,6 +408,7 @@ def household_detection_page():
     st.markdown("""
     This bar chart displays the distribution of households across different states.
     """)
+
     household_state_counts = filtered_household_df['State'].value_counts().reset_index()
     household_state_counts.columns = ['State', 'Number_of_Households']
 
@@ -422,7 +423,24 @@ def household_detection_page():
         color_continuous_scale='Viridis'
     )
 
-    st.plotly_chart(fig_household_state, use_container_width=True)
+    fig_household_state.update_layout(
+        xaxis_title='Number of Households',
+        yaxis_title='State',
+        title={
+            'text': 'Number of Households in Each State',
+            'y':0.9,
+            'x':0.5,
+            'xanchor': 'center',
+            'yanchor': 'top'
+        },
+        hovermode='closest'
+    )
+
+    fig_household_state.update_traces(
+        hovertemplate='<b>%{y}</b><br>Number of Households: %{x}<extra></extra>'
+    )
+
+    st.plotly_chart(fig_household_state)
 
     st.markdown("""
     This plot shows the distribution of households across different states.
